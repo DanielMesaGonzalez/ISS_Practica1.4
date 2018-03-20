@@ -3,8 +3,7 @@ package org.Practica_1_4.proyectoMVC;
 import java.util.List;
 
 import javax.sql.DataSource;
-
-import org.springframework.core.JdbcTemplate;
+import org.springframework.jdbc.core.JdbcTemplate;
 
 public class UsuariosDAO implements UsuarioDAOInterface{
 	
@@ -18,15 +17,19 @@ public class UsuariosDAO implements UsuarioDAOInterface{
 	@Override
 	public void InsertaUsuario(UsuariosDTO usuario) {
 		// TODO Auto-generated method stub
-		String sql = "insert into usuarios values(?,?)";
-		Object[ ] parametros = {usuario.getId(),usuario.getNombre()};
+		String sql = "insert into usuarios values(?,?,?)";
+		Object[ ] parametros = {usuario.getNombre(),usuario.getApellidos(),usuario.getEmail()};
 		this.jdbcTemplate.update(sql,parametros);
 	}
 
 	@Override
 	public List<UsuariosDTO> leeUsuario() {
-		// TODO Auto-generated method stub
-		return null;
+		String sql= "select * from usuarios";
+		UsuarioMapper mapper= new UsuarioMapper();
+		@SuppressWarnings("unchecked")
+		List<UsuariosDTO> usuarios= this.jdbcTemplate.query(sql, mapper);
+		
+		return usuarios ;
 	}
 
 	@Override
