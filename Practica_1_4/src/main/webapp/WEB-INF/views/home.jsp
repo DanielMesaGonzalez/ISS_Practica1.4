@@ -8,7 +8,7 @@
 </head>
 <body>
 <h1>Control de acceso</h1>
-<form action="http://localhost:8080/Practica_Migracion3/Sesion3" method=post>
+<form action="http://localhost:8080/proyectoMVC/Sesion3" method=post>
 Usuario:<input type="text" name="usuario"> Password:<input type="password" name="clave">
 <br>
 <br>

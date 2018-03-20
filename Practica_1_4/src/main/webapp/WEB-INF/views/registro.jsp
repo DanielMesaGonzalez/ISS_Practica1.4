@@ -8,7 +8,7 @@
 </head>
 <body>
 <h1>Registro</h1>
-<form action="http://localhost:8080/Practica_Migracion3/Registro" method=post>
+<form action="http://localhost:8080/proyectoMVC/Registro" method=post>
 Name: <input type=text name=username>
 Surname: <input type=text name=surname>
 Email: <input type=text name=email>
