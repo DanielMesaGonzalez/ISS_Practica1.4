@@ -2,6 +2,7 @@ package org.Practica_1_4.proyectoMVC;
 
 
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
@@ -25,7 +26,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-	
+	private UsuariosDAO dao= new UsuariosDAO();
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
@@ -44,6 +45,7 @@ public class HomeController {
 	    UsuariosDTO user=new UsuariosDTO(nombre, apellido, email);
 	    sesion.setAttribute("nusuario", user);
 	    request.setAttribute("nusuario", user);
+	    dao.InsertaUsuario(user);
 		return "sesion";
 	}
 	
@@ -70,7 +72,10 @@ public class HomeController {
 		
 		if(db.checkAdmin(usuario,passwd)) {
 			
+			List<UsuariosDTO> a=dao.leeUsuario();
+			
 			return"admin";
+			
 			
 		}else {
 			return "registro";

@@ -8,10 +8,11 @@ import org.springframework.jdbc.core.RowMapper;
 public class UsuarioMapper implements RowMapper{
 
 	public UsuariosDTO mapRow(ResultSet rs, int rowNum) throws SQLException{
-UsuariosDTO usuario = new UsuariosDTO();
-usuario.setApellidos(rs.getString("apellidos"));
-usuario.setNombre(rs.getString("nombre"));
-usuario.setEmail(rs.getString("email"));
+		
+     UsuariosDTO usuario = new UsuariosDTO();
+     usuario.setApellidos(rs.getString("apellidos"));
+     usuario.setNombre(rs.getString("nombre"));
+     usuario.setEmail(rs.getString("email"));
 
 return usuario;
 }
