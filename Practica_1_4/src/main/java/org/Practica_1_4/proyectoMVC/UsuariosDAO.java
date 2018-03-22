@@ -3,14 +3,24 @@ package org.Practica_1_4.proyectoMVC;
 import java.util.List;
 
 import javax.sql.DataSource;
-import org.springframework.jdbc.core.JdbcTemplate;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
+
+@Repository
 public class UsuariosDAO implements UsuarioDAOInterface{
 	
+	
 	private JdbcTemplate jdbcTemplate;
-	private DataSource dataSource;
+	
+	
+	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+	    this.jdbcTemplate = jdbcTemplate;
+	}
+	
+	@Autowired
 	public void setDataSource(DataSource dataSource) {
-	this.dataSource = dataSource;
 	this.jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 

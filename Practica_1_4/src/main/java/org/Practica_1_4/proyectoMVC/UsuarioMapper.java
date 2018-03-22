@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import org.springframework.jdbc.core.RowMapper;
 
 
-public class UsuarioMapper implements RowMapper{
+public class UsuarioMapper implements RowMapper<UsuariosDTO>{
 
 	public UsuariosDTO mapRow(ResultSet rs, int rowNum) throws SQLException{
 		
