@@ -11,5 +11,6 @@
 Nombre:<st:out value="${nusuario.nombre}"/>
 Apellidos:<st:out value='${nusuario.apellidos}'/>
 Email:<st:out value="${nusuario.email}"/>
+Contraseña:<st:out value="${nusuario.clave}"/>
 </body>
 </html>

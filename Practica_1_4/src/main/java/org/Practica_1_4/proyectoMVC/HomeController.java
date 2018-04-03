@@ -45,7 +45,8 @@ public class HomeController {
 	    String nombre= (String)request.getParameter("username");
 	    String apellido= (String)request.getParameter("surname");
 	    String email= (String)request.getParameter("email");
-	    UsuariosDTO user=new UsuariosDTO(nombre, apellido, email);
+	    String clave= (String)request.getParameter("pass");
+	    UsuariosDTO user=new UsuariosDTO(nombre, apellido, email,clave);
 	    sesion.setAttribute("nusuario", user);
 	    request.setAttribute("nusuario", user);
 	    dao.InsertaUsuario(user);
@@ -66,25 +67,29 @@ public class HomeController {
 	
 	
 	@RequestMapping(value = "/Sesion3", method = RequestMethod.POST)
-	public String sesion(@RequestParam("usuario") String usuario,@RequestParam("clave") String passwd,HttpServletRequest req,Locale locale, Model model) {
-		//String usuario=req.
-		//String passwd=req.getParameter("clave");
-		//String url="";
+	public String sesion(HttpServletRequest request, @RequestParam("usuario") String usuario,@RequestParam("clave") String passwd,HttpServletRequest req,Locale locale, Model model) {
+		HttpSession sesion = request.getSession();
 		UsuariosDTO db= new UsuariosDTO();
 		
 		
 		if(db.checkAdmin(usuario,passwd)) {
 			
-			List<UsuariosDTO> a=dao.leeUsuario();
-			
+			List<UsuariosDTO> lista=dao.leeUsuario();
+			req.setAttribute("lista", lista);
 			return"admin";
 			
 			
-		}else {
+		}else if (dao.BuscarUsuario(usuario)==null) {
 			return "registro";
+			}else { 
+				UsuariosDTO user=dao.BuscarUsuario(usuario);
+		    String nombre=user.getNombre() , apellido=user.getApellidos() , email=user.getEmail(), clave=user.getClave();
+		    sesion.setAttribute("nusuario", user);
+		    request.setAttribute("nusuario", user);
+				
+				
+				return "sesion";
 			}
-		//return "sesion";
-		
 	}
 	
 }

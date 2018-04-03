@@ -5,6 +5,6 @@ import java.util.List;
 public interface UsuarioDAOInterface {
 	public void InsertaUsuario(UsuariosDTO usuario);
 	public List<UsuariosDTO> leeUsuario();
-	public void BuscarUsuario();
+	public UsuariosDTO BuscarUsuario(String email);
 
 }

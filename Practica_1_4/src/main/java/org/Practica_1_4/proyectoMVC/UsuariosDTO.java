@@ -7,12 +7,14 @@ public class UsuariosDTO implements Serializable{
 	private String nombre;
 	private String apellidos;
 	private String email;
+	private String clave;
 	
-	public UsuariosDTO(String nombre, String apellidos, String email) {
+	public UsuariosDTO(String nombre, String apellidos, String email, String clave) {
 		super();
 		this.nombre = nombre;
 		this.apellidos = apellidos;
 		this.email = email;
+		this.clave = clave;
 	}
 	
 	
@@ -20,6 +22,7 @@ public class UsuariosDTO implements Serializable{
 		nombre="";
 		apellidos="";
 		email="";
+		clave="";
 	}
 
 	public String getNombre() {
@@ -44,6 +47,13 @@ public class UsuariosDTO implements Serializable{
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	public String getClave() {
+		return clave;
+	}
+
+	public void setClave(String clave) {
+		this.clave = clave;
 	}
 
 

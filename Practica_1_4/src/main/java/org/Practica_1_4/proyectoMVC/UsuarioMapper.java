@@ -13,6 +13,7 @@ public class UsuarioMapper implements RowMapper<UsuariosDTO>{
      usuario.setApellidos(rs.getString("apellidos"));
      usuario.setNombre(rs.getString("nombre"));
      usuario.setEmail(rs.getString("email"));
+     usuario.setClave(rs.getString("clave"));
 
 return usuario;
 }

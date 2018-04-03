@@ -9,9 +9,10 @@
 <body>
 <h1>Registro</h1>
 <form action="http://localhost:8080/proyectoMVC/Registro" method=post>
-Name: <input type=text name=username>
-Surname: <input type=text name=surname>
-Email: <input type=text name=email>
+Name: <input type=text name=username maxlength="30" required/>
+Surname: <input type=text name=surname maxlength="30" required/>
+Email: <input type=text name=email maxlength="30" required/>
+Contraseña: <input type=text name=pass maxlength="30" required/>
 <input type=submit value=Send>
 </form>
 </body>

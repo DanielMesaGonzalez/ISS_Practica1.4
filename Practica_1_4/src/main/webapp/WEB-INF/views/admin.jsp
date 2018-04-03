@@ -13,9 +13,10 @@
 <tr style="background:#BDBDBD">
 <th> Apellidos </th>
 <th> Nombre </th>
-<th> email </th>
+<th> Email </th>
+<th> Clave </th>
 </tr>
-<st:forEach items="${usuarios}" var="user" varStatus="estado">
+<st:forEach items="${lista}" var="user" varStatus="estado">
 <st:if test="${estado.count%2 == 0}">
 <tr style="background:#81BEF7">
 </st:if>
@@ -25,6 +26,7 @@
 <td><st:out value="${user.apellidos}" /></td>
 <td><st:out value="${user.nombre}" /></td>
 <td><st:out value="${user.email}" /></td>
+<td><st:out value="${user.clave}" /></td>
 </tr>
 </st:forEach> </table>
 </body>
