@@ -34,11 +34,11 @@ public class UsuariosDAO implements UsuarioDAOInterface{
 
 	@Override
 	public List<UsuariosDTO> leeUsuario() {
+
 		String sql= "select * from usuarios";
 		UsuarioMapper mapper= new UsuarioMapper();
 		@SuppressWarnings("unchecked")
 		List<UsuariosDTO> usuarios= this.jdbcTemplate.query(sql, mapper);
-		
 		return usuarios ;
 	}
 

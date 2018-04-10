@@ -49,8 +49,13 @@ public class HomeController {
 	    UsuariosDTO user=new UsuariosDTO(nombre, apellido, email,clave);
 	    sesion.setAttribute("nusuario", user);
 	    request.setAttribute("nusuario", user);
+	    if(dao.BuscarUsuario(email)==null) {
 	    dao.InsertaUsuario(user);
+	    model.addAttribute("msgDB", "Tus datos siguientes se han registrado correctamente.");
 		return "sesion";
+	    }else 
+	    	model.addAttribute("msgDB", "El email introducido ya existe, comprueba tus datos y vuelvelo a intentar.");
+	    	return "sesion";
 	}
 	
 	@RequestMapping(value = "/Registro", method = RequestMethod.GET)
@@ -67,7 +72,7 @@ public class HomeController {
 	
 	
 	@RequestMapping(value = "/Sesion3", method = RequestMethod.POST)
-	public String sesion(HttpServletRequest request, @RequestParam("usuario") String usuario,@RequestParam("clave") String passwd,HttpServletRequest req,Locale locale, Model model) {
+	public String sesion(HttpServletRequest request, @RequestParam("usuario") String usuario,@RequestParam("clave") String passwd,Locale locale, Model model) {
 		HttpSession sesion = request.getSession();
 		UsuariosDTO db= new UsuariosDTO();
 		
@@ -75,15 +80,14 @@ public class HomeController {
 		if(db.checkAdmin(usuario,passwd)) {
 			
 			List<UsuariosDTO> lista=dao.leeUsuario();
-			req.setAttribute("lista", lista);
+			request.setAttribute("lista", lista);
 			return"admin";
 			
 			
 		}else if (dao.BuscarUsuario(usuario)==null) {
 			return "registro";
 			}else { 
-				UsuariosDTO user=dao.BuscarUsuario(usuario);
-		    String nombre=user.getNombre() , apellido=user.getApellidos() , email=user.getEmail(), clave=user.getClave();
+			UsuariosDTO user=dao.BuscarUsuario(usuario);
 		    sesion.setAttribute("nusuario", user);
 		    request.setAttribute("nusuario", user);
 				

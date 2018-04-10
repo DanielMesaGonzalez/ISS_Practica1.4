@@ -8,6 +8,7 @@
 <title>Sesion</title>
 </head>
 <body>
+<p>${msgDB}</p>
 Nombre:<st:out value="${nusuario.nombre}"/>
 Apellidos:<st:out value='${nusuario.apellidos}'/>
 Email:<st:out value="${nusuario.email}"/>
